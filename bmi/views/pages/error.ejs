@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<% include ../partials/head %>
+<body>
+  <% include ../partials/navbar %>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="alert alert-danger" role="alert">
+            <h5 class="alert-heading">
+                <%= alert_heading %>
+            </h5>
+            <%= message %>
+            <hr>
+            <p class="mb-0 text-center">
+                <a name="link_to_form" id="link_to_form" class="btn btn-dark" href="<%= button_link %>" role="button">Form</a>
+            </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% include ../partials/scripts %>
+</body>
+
+</html>
