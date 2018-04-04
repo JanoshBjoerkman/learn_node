@@ -5,15 +5,21 @@ app.set('view engine', 'ejs');
 app.set("views", __dirname + "/views");
 app.use('/public', express.static(__dirname + '/public'));
 
+var bodyParser = require('body-parser');
+app.use( bodyParser.json() );               // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({             // to support URL-encoded bodies
+  extended: true
+})); 
+
 app.get("/", function(req, res){
     res.render("pages/landing", {
         title: "BMI",
         nav_active_element: "home"
     });
 });
-app.get("/result", function(req, res){
-    var m = req.query.cm / 100;
-    var kg = req.query.kg;
+app.post("/result", function(req, res){
+    var m = req.body.cm / 100;
+    var kg = req.body.kg;
     if(m == 0 || isNaN(m) || kg == 0 || isNaN(kg))
     {
         res.render("pages/error", {
